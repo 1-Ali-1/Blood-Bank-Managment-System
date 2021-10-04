@@ -11,6 +11,7 @@ Group Project for solving ACP Assignments
 ## Requirements of the this project
 
 - Donor Registration
+- Recipient Regstration
 - Blood Donor details 
 - Blood Recipient details
 - Blood collection details 
