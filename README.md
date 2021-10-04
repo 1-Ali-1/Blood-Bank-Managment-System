@@ -10,10 +10,11 @@ Group Project for solving ACP Assignments
 
 ## Requirements of the this project
 
-- Blood donor details
-- Donor details
-- Recipient details
-- Blood collection details
+- Donor Registration
+- Blood Donor details 
+- Blood Recipient details
+- Blood collection details 
+- Employee details
 - Stock details
-- Reports
 - Camp details
+- Reports
