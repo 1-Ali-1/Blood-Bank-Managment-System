@@ -13,7 +13,7 @@ Group Project for solving ACP Assignments
 - this project is a blood bank to store and manage blood between donor and recipients
  
 - Blood donors can log in and register in the application.
-- Donor Registration for registering new donors.
+- Blood Recipients can log in and register in the application.
 - Recipient Regstration for registering new recipients.
 - A part to see all details about each donor.
 - A part to see all details about each recipient.
