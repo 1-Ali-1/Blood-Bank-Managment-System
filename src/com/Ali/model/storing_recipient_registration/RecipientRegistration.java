@@ -1,4 +1,4 @@
-package com.Ali;
+package com.Ali.model.storing_recipient_registration;
 import java.io.Serializable;
 
 public class RecipientRegistration implements Serializable {
@@ -14,82 +14,82 @@ public class RecipientRegistration implements Serializable {
     String recipientAddress ;
     String recipientPassword ;
 
-    void setId(int id){
+    public void setId(int id){
         this.id=id;
     }
 
-    int getId(){
+    public int getId(){
 
         return id;
     }
-    void setRecipientFirstName(String recipientFirstName){
+    public void setRecipientFirstName(String recipientFirstName){
         this.recipientFirstName =recipientFirstName;
     }
-    void setRecipientSecondName(String recipientSecondName){
+    public void setRecipientSecondName(String recipientSecondName){
         this.recipientSecondName =recipientSecondName;
     }
-    void setRecipientGender(String recipientGender){
+    public void setRecipientGender(String recipientGender){
         this.recipientGender=recipientGender;
     }
-    void setRecipientAge(int recipientAge){
+    public void setRecipientAge(int recipientAge){
         this.recipientAge=recipientAge;
     }
-    void setRecipientMobileNumber(String recipientMobileNumber){
+    public void setRecipientMobileNumber(String recipientMobileNumber){
         this.recipientMobileNumber=recipientMobileNumber;
     }
-    void setRecipientBloodGroup(String recipientBloodGroup){
+    public void setRecipientBloodGroup(String recipientBloodGroup){
         this.recipientBloodGroup=recipientBloodGroup;
     }
-    void setRecipientEmail(String recipientEmail){
+    public void setRecipientEmail(String recipientEmail){
         this.recipientEmail=recipientEmail;
     }
-    void setRecipientAddress(String recipientAddress){
+    public void setRecipientAddress(String recipientAddress){
         this.recipientAddress=recipientAddress;
     }
-    void setRecipientPassword(String recipientPassword){
+    public void setRecipientPassword(String recipientPassword){
         this.recipientPassword=recipientPassword;
     }
 
-    String getRecipientFirstName(){
+    public String getRecipientFirstName(){
 
         return recipientFirstName;
     }
-    String getRecipientSecondName(){
+    public String getRecipientSecondName(){
 
         return recipientSecondName;
     }
 
-    String getRecipientGender(){
+    public String getRecipientGender(){
 
         return recipientGender;
     }
 
-    int getRecipientAge(){
+    public int getRecipientAge(){
 
         return recipientAge;
     }
 
-    String getRecipientMobileNumber(){
+    public String getRecipientMobileNumber(){
 
         return recipientMobileNumber;
     }
 
-    String getRecipientBloodGroup(){
+    public String getRecipientBloodGroup(){
 
         return recipientBloodGroup;
     }
 
-    String getRecipientEmail(){
+    public String getRecipientEmail(){
 
         return recipientEmail;
     }
 
-    String getRecipientAddress(){
+    public String getRecipientAddress(){
 
         return recipientAddress;
     }
 
-    String getRecipientPassword(){
+    public String getRecipientPassword(){
 
         return recipientPassword;
     }

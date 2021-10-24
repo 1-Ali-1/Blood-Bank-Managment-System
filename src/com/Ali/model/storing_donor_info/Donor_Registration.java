@@ -1,9 +1,9 @@
-package com.Ali;
+package com.Ali.model.storing_donor_info;
 import java.io.Serializable;
 
 
 public class Donor_Registration implements Serializable {
-    int id;
+    static int id;
     String donorFirstName ;
     String getDonorSecondName;
     String donorGender ;
@@ -18,81 +18,81 @@ public class Donor_Registration implements Serializable {
 
 
 
-    void setDonorFirstName(String donorFirstName){  this.donorFirstName=donorFirstName; }
-    void setGetDonorSecondName(String donorSecondName){
+    public void setDonorFirstName(String donorFirstName){  this.donorFirstName=donorFirstName; }
+    public void setGetDonorSecondName(String donorSecondName){
         this.getDonorSecondName=donorSecondName;
     }
-    void setDonorGender(String donorGender){
+    public void setDonorGender(String donorGender){
         this.donorGender=donorGender;
     }
-    void setDonorAge(int donorAge){
+    public void setDonorAge(int donorAge){
         this.donorAge=donorAge;
     }
-    void setDonorMobileNumber(String donorMobileNumber){
+    public void setDonorMobileNumber(String donorMobileNumber){
         this.donorMobileNumber=donorMobileNumber;
     }
-    void setDonorBloodGroup(String donorBloodGroup){
+    public void setDonorBloodGroup(String donorBloodGroup){
         this.donorBloodGroup=donorBloodGroup;
     }
-    void setDonorEmail(String donorEmail){
+    public void setDonorEmail(String donorEmail){
         this.donorEmail=donorEmail;
     }
-    void setDonorAddress(String donorAddress){
+    public void setDonorAddress(String donorAddress){
         this.donorAddress=donorAddress;
     }
-    void setDonorPassword(String donorPassword){
+    public void setDonorPassword(String donorPassword){
         this.donorPassword=donorPassword;
     }
-    void setId(int id){
+    public void setId(int id){
         this.id=id;
     }
 
 
 
-    int getId(){
+    public int getId(){
 
         return id;
     }
-    String getDonorFirstName(){
+    public String getDonorFirstName(){
 
         return donorFirstName;
     }
-    String getDonorSecondName() {
+    public String getDonorSecondName() {
 
         return getDonorSecondName;
     }
 
-    String getDonorGender(){
+    public String getDonorGender(){
 
         return donorGender;
     }
 
-    int getDonorAge(){
+    public int getDonorAge(){
 
         return donorAge;
     }
 
-    String getDonorMobileNumber(){
+    public String getDonorMobileNumber(){
 
         return donorMobileNumber;
     }
 
-    String getDonorBloodGroup(){
+    public String getDonorBloodGroup(){
 
         return donorBloodGroup;
     }
 
-    String getDonorEmail(){
+    public String getDonorEmail(){
 
         return donorEmail;
     }
 
-    String getDonorAddress(){
+    public String getDonorAddress(){
 
         return donorAddress;
     }
 
-    String getDonorPassword(){
+    public String getDonorPassword(){
 
         return donorPassword;
     }
