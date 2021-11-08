@@ -1,9 +1,10 @@
 package com.Ali.model.storing_donor_info;
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Donor_Registration implements Serializable {
-    static int id;
+    private Integer id;
     String donorFirstName ;
     String getDonorSecondName;
     String donorGender ;
@@ -15,6 +16,12 @@ public class Donor_Registration implements Serializable {
     String donorPassword ;
 
 
+    private static final AtomicInteger idGenerator = new AtomicInteger(1);
+    public void uniqueID() {
+        //assign unique id to an instance variable
+        id = idGenerator.getAndIncrement();
+    }
+
 
 
 
@@ -22,7 +29,7 @@ public class Donor_Registration implements Serializable {
     public void setGetDonorSecondName(String donorSecondName){
         this.getDonorSecondName=donorSecondName;
     }
-    public void setDonorGender(String donorGender){
+     public void setDonorGender(String donorGender){
         this.donorGender=donorGender;
     }
     public void setDonorAge(int donorAge){
@@ -43,9 +50,7 @@ public class Donor_Registration implements Serializable {
     public void setDonorPassword(String donorPassword){
         this.donorPassword=donorPassword;
     }
-    public void setId(int id){
-        this.id=id;
-    }
+
 
 
 

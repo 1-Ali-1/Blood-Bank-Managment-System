@@ -3,16 +3,21 @@ package com.Ali.model.storing_donor_info;
 import java.util.ArrayList;
 
 public class ListOfDonors {
-    ArrayList<Donor_Registration> donors = new ArrayList<>();
+   public static ArrayList<Donor_Registration> donors = new ArrayList<>();
 
-   public  void addToDonors(Donor_Registration ob){
+   public static void addToDonors(Donor_Registration ob){
        donors.add(ob);
+       System.out.println(donors.size());
 
    }
-   public int sizeOfDonorsList(){
+    public static void deleteDonor(int id){
+        donors.removeIf(e -> e.getId() == id);
+    }
+
+    public  static int sizeOfDonorsList(){
        return donors.size();
    }
-   public Donor_Registration getDonor(int i){
+   public static Donor_Registration getDonor(int i){
        return donors.get(i);
    }
 }

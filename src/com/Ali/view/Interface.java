@@ -1,117 +1,159 @@
 package com.Ali.view;
 
-import com.Ali.Storage_From_File_To_Collection.ReadFromFile;
-import com.Ali.Storage_From_File_To_Collection.WriteToFile;
+
 import com.Ali.model.InsertingAndShowingData;
+import com.Ali.model.Stock;
 import com.Ali.model.storing_donor_info.Donor_Registration;
 import com.Ali.model.storing_donor_info.ListOfDonors;
 import com.Ali.model.storing_recipient_registration.ListOfRecipient;
 import com.Ali.model.storing_recipient_registration.RecipientRegistration;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Optional;
 
 public class Interface {
 
 
-    public void ui(){
+    public void ui() throws IOException {
         ListOfDonors listOfDonors=new ListOfDonors();
         ListOfRecipient listOfRecipient=new ListOfRecipient();
         InsertingAndShowingData insertingAndShowingData=new InsertingAndShowingData();
+        Stock stock=new Stock();
 
-        int i;
+        Optional<Integer> i;
 
-        try {
             BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println(" * * * * * Welcome To Blood Bank * * * * *");
-            System.out.println(" please choose with objective you want:");
-            System.out.println(" enter (1) for registering new Donor");
-            System.out.println(" enter (2) for registering new Recipient");
-            System.out.println(" enter (3) for read Donor details");
-            System.out.println(" enter (4) for read Recipient details ");
-            System.out.println(" enter (0)  for exit the program");
+            System.out.println("");
+            System.out.println("* * * * * * Welcome To Blood Bank * * * * * * * * * * * * ");
 
-            i=Integer.parseInt(stdin.readLine());
+            System.out.println("* please choose with objective you want:                *");
+            System.out.println("* enter (1) for registering new Donor                   *");
+            System.out.println("* enter (2) for registering new Recipient               *");
+            System.out.println("* enter (3) for Reading info About Donor and Recipient  *");
+            System.out.println("* enter (4) for deleting Donor and Recipient            *");
+            System.out.println("* enter (5) for showing blood groups                    *");
+            System.out.println("* enter (0)  for exit the program                       *");
+            System.out.println("*                                                       *");
+            System.out.println("* * * * * 👨‍🎓 Made By Group A students 👨‍🎓 * * * * * * *");
 
-            while(i!=0){
+        String temp = stdin.readLine();
+            i= Optional.of(Integer.parseInt(temp.matches("^[a-zA-Z]*$") ?  "404" : temp ));
+
+            while(i.get() != 0 ){
+            if(i.get() == 404){
+                System.out.println("please type a number among the objectives");
+               i= Optional.of(0);
+            }
 
 
 
-
-                if(i==1){
+                if(i.isPresent() && i.get() == 1){
                     Donor_Registration dr=new Donor_Registration();
                     insertingAndShowingData.InsertForDonor(dr);
-                    // writing to file
-                    WriteToFile writeToFile=new WriteToFile();
-                    writeToFile.writeObjectToFile(dr,"Donor details.txt");
+
+                    listOfDonors.addToDonors(dr);
+
 
                     System.out.println("Done Registering !!");
                 }
 
-                else if(i==2){
+                else if(i.isPresent() && i.get() == 2){
 
                     RecipientRegistration ur=new RecipientRegistration();
                     insertingAndShowingData.InsertForRecipient(ur);
 
                     // writing to file
-                    WriteToFile writeToFile=new WriteToFile();
-                    writeToFile.writeObjectToFile(ur,"Recipient details.txt");
+                   listOfRecipient.addToRecipient(ur);
 
                     System.out.println("Done Registering !!");
 
                 }
 
 
-                else if(i==3){
+                else if(i.isPresent() && i.get() == 3){
 
 
-                    try{ ReadFromFile readFromFile = new ReadFromFile();
-                        readFromFile.readFromFileForDonor(listOfDonors);
-
-                    }catch (Exception e){
-                        System.out.println("there is no data ");
+                    System.out.println(" enter (1) for knowing donor info");
+                    System.out.println(" enter (2) for knowing recipient info");
+                    BufferedReader oneORtwo = new BufferedReader(new InputStreamReader(System.in));
+                    String choice = oneORtwo.readLine();
+                    if(Integer.parseInt(choice) == 1){
+                        insertingAndShowingData.ShowingDonorData(listOfDonors);
                     }
-                    // read from file
-
-
-                    //showing donor data
-                    insertingAndShowingData.ShowingDonorData(listOfDonors);
-
+                    else {
+                        insertingAndShowingData.ShowingRecipientData(listOfRecipient);
+                    }
 
 
 
                 }
 
-                else if(i==4){
+                else if(i.isPresent() && i.get() == 4){
 
 
-                    // read from file
+                    System.out.println(" enter (1) for deleting donor with a specific ID");
+                    System.out.println(" enter (2) for deleting recipient with a specific ID");
+                    BufferedReader idbuffer = new BufferedReader(new InputStreamReader(System.in));
+                    String idChoice = idbuffer.readLine();
+                    if(Integer.parseInt(idChoice) == 1){
+                        BufferedReader idb = new BufferedReader(new InputStreamReader(System.in));
+                        System.out.println("enter id");
+                        String realID = idb.readLine();
+                        ListOfDonors.deleteDonor(Integer.parseInt(realID));
+                        System.out.println("successfully deleted");
 
-                    try{   ReadFromFile readFromFile=new ReadFromFile();
-                        readFromFile.readFromFileForRecipient(listOfRecipient);
+                    }
+                    else {
+                        BufferedReader idb = new BufferedReader(new InputStreamReader(System.in));
+                        System.out.println("enter id");
+                        String realID = idb.readLine();
+                        ListOfRecipient.deleteRecipient(Integer.parseInt(realID));
+                        System.out.println("successfully deleted");
 
-
-                    }catch (Exception e){
-                        System.out.println("there is no data ");
                     }
 
-                    //showing recipient data
-                    insertingAndShowingData.ShowingRecipientData(listOfRecipient);
+
 
                 }
 
-                System.out.println("*********Welcome To Blood Bank***********");
-                System.out.println(" enter (1) for registering new donor");
-                System.out.println(" enter (2) for registering new Recipient");
-                System.out.println(" enter (3) for read Donor");
-                System.out.println(" enter (4) for read  Recipient");
-                System.out.println(" enter (0) for exit the program");
 
-                i=Integer.parseInt(stdin.readLine());
+                else if(i.isPresent() && i.get() == 5){
+
+                    if (stock.isMapEmpty()){
+                        System.out.println("Empty");
+                    } else{
+                        stock.getDonorBloodLiters();
+                    }
+
+
+
+                }
+
+                System.out.println("");
+                System.out.println("* * * * * * Welcome To Blood Bank * * * * * * * * * * * * ");
+
+                System.out.println("* please choose with objective you want:                *");
+                System.out.println("* enter (1) for registering new Donor                   *");
+                System.out.println("* enter (2) for registering new Recipient               *");
+                System.out.println("* enter (3) for Reading info About Donor and Recipient  *");
+                System.out.println("* enter (4) for deleting Donor and Recipient            *");
+                System.out.println("* enter (5) for showing blood groups                    *");
+                System.out.println("* enter (0)  for exit the program                       *");
+                System.out.println("*                                                       *");
+                System.out.println("* * * * * 👨‍🎓 Made By Group A students 👨‍🎓 * * * * * * *");
+
+
+                String temp2=stdin.readLine();
+                i= Optional.of(Integer.parseInt(temp2.matches("^[a-zA-Z]*$") ?  "404" : temp2 ));
+                if(i.get() == 404){
+                    System.out.println("please type a number among the objectives");
+                }
 
             }
 
-        } catch (Exception ex) { System.out.println(ex.getMessage());}
+
 
     }
 

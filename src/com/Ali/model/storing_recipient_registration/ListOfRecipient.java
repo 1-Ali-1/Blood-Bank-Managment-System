@@ -6,11 +6,14 @@ import java.util.ArrayList;
 
 public class ListOfRecipient {
 
-    ArrayList<RecipientRegistration> recipients = new ArrayList<>();
+    static ArrayList<RecipientRegistration> recipients = new ArrayList<>();
 
     public void addToRecipient(RecipientRegistration ob){
         recipients.add(ob);
 
+    }
+    public static void deleteRecipient(int id){
+        recipients.removeIf(e -> e.getId() == id);
     }
 
     public int sizeOfRecipientsList(){

@@ -1,9 +1,10 @@
 package com.Ali.model.storing_recipient_registration;
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class RecipientRegistration implements Serializable {
 
-    int id;
+    private Integer id;
     String recipientFirstName;
     String recipientSecondName;
     String recipientGender ;
@@ -14,9 +15,14 @@ public class RecipientRegistration implements Serializable {
     String recipientAddress ;
     String recipientPassword ;
 
-    public void setId(int id){
-        this.id=id;
+
+
+    private static final AtomicInteger idGenerator = new AtomicInteger(1);
+    public void uniqueID() {
+        //assign unique id to an instance variable
+        id = idGenerator.getAndIncrement();
     }
+
 
     public int getId(){
 
@@ -31,6 +37,7 @@ public class RecipientRegistration implements Serializable {
     public void setRecipientGender(String recipientGender){
         this.recipientGender=recipientGender;
     }
+
     public void setRecipientAge(int recipientAge){
         this.recipientAge=recipientAge;
     }

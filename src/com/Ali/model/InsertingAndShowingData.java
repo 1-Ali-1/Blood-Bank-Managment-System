@@ -14,8 +14,7 @@ public class InsertingAndShowingData {
     public void InsertForDonor(Donor_Registration dr) throws IOException {
 
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Insert donor id");
-        dr.setId(Integer.parseInt(stdin.readLine()));
+        dr.uniqueID();
         System.out.println("Insert Donor First Name");
         dr.setDonorFirstName(stdin.readLine());
         System.out.println("Insert Donor Second Name");
@@ -23,7 +22,13 @@ public class InsertingAndShowingData {
         System.out.println("Insert Donor Gender");
         dr.setDonorGender(stdin.readLine());
         System.out.println("Insert Donor Age");
-        dr.setDonorAge(Integer.parseInt(stdin.readLine()));
+        String temp = stdin.readLine();
+        dr.setDonorAge(Integer.parseInt(temp.matches("^[a-zA-Z]*$") ?  "404" : temp));
+        while (dr.getDonorAge() == 404){
+            System.out.println("enter a your age correctly");
+            String temp2 = stdin.readLine();
+            dr.setDonorAge(Integer.parseInt(temp2.matches("^[a-zA-Z]*$") ?  "404" : temp2));
+        }
         System.out.println("Insert Donor Mobile Number");
         dr.setDonorMobileNumber(stdin.readLine());
         System.out.println("Insert Donor Blood Group");
@@ -43,8 +48,7 @@ public class InsertingAndShowingData {
     public void InsertForRecipient(RecipientRegistration ur) throws IOException {
 
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Insert Recipient id");
-        ur.setId(Integer.parseInt(stdin.readLine()));
+        ur.uniqueID();
 
         System.out.println("Insert Recipient First Name");
         ur.setRecipientFirstName(stdin.readLine());
@@ -53,7 +57,14 @@ public class InsertingAndShowingData {
         System.out.println("Insert Recipient Gender");
         ur.setRecipientGender(stdin.readLine());
         System.out.println("Insert Recipient Age");
-        ur.setRecipientAge(Integer.parseInt(stdin.readLine()));
+        String temp = stdin.readLine();
+        ur.setRecipientAge(Integer.parseInt(temp.matches("^[a-zA-Z]*$") ?  "404" : temp));
+        while (ur.getRecipientAge() == 404){
+            System.out.println("enter a your age correctly");
+            String temp2 = stdin.readLine();
+            ur.setRecipientAge(Integer.parseInt(temp2.matches("^[a-zA-Z]*$") ?  "404" : temp2));
+        }
+
         System.out.println("Insert Recipient Mobile Number");
         ur.setRecipientMobileNumber(stdin.readLine());
         System.out.println("Insert Recipient Blood Group");
@@ -69,6 +80,7 @@ public class InsertingAndShowingData {
     }
 
     public void ShowingDonorData(ListOfDonors listOfDonors){
+        if (listOfDonors.sizeOfDonorsList() == 0){ System.out.println("empty");}
         for (int index=0; index < listOfDonors.sizeOfDonorsList(); index++){
 
             System.out.println("Donor Information");
@@ -90,6 +102,7 @@ public class InsertingAndShowingData {
 
 
     public void ShowingRecipientData(ListOfRecipient listOfRecipient){
+        if (listOfRecipient.sizeOfRecipientsList() == 0){ System.out.println("empty");}
         for (int index=0; index < listOfRecipient.sizeOfRecipientsList(); index++) {
 
 
@@ -107,4 +120,5 @@ public class InsertingAndShowingData {
             System.out.println("****************");
 
         }
+
 }}
